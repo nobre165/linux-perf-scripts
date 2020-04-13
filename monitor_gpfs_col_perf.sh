@@ -18,7 +18,7 @@
 
 #############################################################################
 #                                                                           #
-# Name: monitor_col_dstat.sh                                                #
+# Name: monitor_gpfs_col_perf.sh                                            #
 # Path: N/A                                                                 #
 # Host(s): N/A                                                              #
 # Info: Script to monitor performance data collection from host and GPFS    #
@@ -40,7 +40,6 @@
 #############################################################################
 
 COL_DIR=/var/perf/dstat
-HOST=$(hostname)
 DATE=$(date +"%Y%m%d")
 TIME=$(date +"%H%M%S")
 
@@ -92,13 +91,13 @@ do
     esac
 done
 
-PSCOUNT=$(ps -eF | grep -E "d[s]tat -t -cdf[g]ilmnprsy" | grep "gpfs"| wc -l)
+PSCOUNT=$(ps -eF | grep "d[s]tat -afv" | grep "gpfs"| wc -l)
 if (($PSCOUNT == 0))
 then
     if (($sflag == 0))
     then
-        nohup /usr/local/scripts/col_dstat.sh &
+        nohup /usr/local/scripts/gpfs_col_perf.bash &
     else
-        nohup /usr/local/scripts/col_dstat.sh -s ${SECS} &
+        nohup /usr/local/scripts/gpfs_col_perf.bash -s ${SECS} &
     fi
 fi

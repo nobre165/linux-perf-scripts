@@ -318,7 +318,7 @@ check_dstat
 check_gpfs_extension
 
 # Check if all counter options are available in the dstat command
-check_dstat_counter_options
+#check_dstat_counter_options
 
 # Start data collection
 if (( $dflag == 0 ))

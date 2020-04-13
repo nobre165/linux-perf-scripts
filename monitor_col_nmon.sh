@@ -65,9 +65,11 @@ TIME=$(date +"%H%M%S")
 
 function usage {
 
-    printf "Usage: %s \n" $0
-    printf "       -s <sample>: duration in seconds of each data collection\n"
-    printf "       -h|?: help\n"
+cat <<EOF
+    Usage: $0
+           -s <sample>: duration in seconds of each data collection
+           -h|?: help
+EOF
 
 }
 
