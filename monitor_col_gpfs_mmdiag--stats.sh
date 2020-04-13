@@ -18,19 +18,19 @@
 
 #############################################################################
 #                                                                           #
-# Name: monitor_col_dstat.sh                                                #
+# Name: monitor_col_gpfs_mmdiag--stats.sh                                   #
 # Path: N/A                                                                 #
 # Host(s): N/A                                                              #
-# Info: Script to monitor performance data collection from host and GPFS    #
+# Info: Script to monitor iostat data collection from host                  #
 #                                                                           #
 # Author: Anderson F Nobre                                                  #
-# Creation date: 26/10/2016                                                 #
-# Version: 0.2                                                              #
+# Creation date: 17/01/2017                                                 #
+# Version: 0.1                                                              #
 #                                                                           #
-# Modification date: 22/12/2016                                             #
-# Modified by: Anderson F. Nobre                                            #
+# Modification date: DD/MM/YYYY                                             #
+# Modified by: XXXXXXXXXXXXXXXXX                                            #
 # Modifications:                                                            #
-# - Modifications to support new flags in gpfs_col_perf.bash script         #
+# - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         #
 #                                                                           #
 #############################################################################
 
@@ -39,7 +39,7 @@
 # Environment variables                                                     #
 #############################################################################
 
-COL_DIR=/var/perf/dstat
+COL_DIR=/var/perf/gpfs
 HOST=$(hostname)
 DATE=$(date +"%Y%m%d")
 TIME=$(date +"%H%M%S")
@@ -92,13 +92,13 @@ do
     esac
 done
 
-PSCOUNT=$(ps -eF | grep -E "d[s]tat -t -cdf[g]ilmnprsy" | grep "gpfs"| wc -l)
+PSCOUNT=$(ps -eF | grep "col_g[p]fs_mmdiag--stats.sh" | grep -v monitor | wc -l)
 if (($PSCOUNT == 0))
 then
     if (($sflag == 0))
     then
-        nohup /usr/local/scripts/col_dstat.sh &
+        nohup /usr/local/scripts/col_gpfs_mmdiag--stats.sh &
     else
-        nohup /usr/local/scripts/col_dstat.sh -s ${SECS} &
+        nohup /usr/local/scripts/col_gpfs_mmdiag--stats.sh -s ${SECS} &
     fi
 fi
