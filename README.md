@@ -59,7 +59,7 @@ below.
 
 - Add the following line in the crontab, according your monitoring:
   - For dstat
-  0,10,20,30,40,50 * * * * /usr/local/scripts/monitor_col_dstat.sh >
+  0/10 * * * * /usr/local/scripts/monitor_col_dstat.sh >
   /var/log/monitor_col_dstat.log 2>&1
 
   - For gpfs_stats:
