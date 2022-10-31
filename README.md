@@ -59,27 +59,27 @@ below.
 
 - Add the following line in the crontab, according your monitoring:
   - For dstat
-  0/10 * * * * /usr/local/scripts/monitor_col_dstat.sh >
+  */10 * * * * /usr/local/scripts/monitor_col_dstat.sh >
   /var/log/monitor_col_dstat.log 2>&1
 
   - For gpfs_stats:
-  0,10,20,30,40,50 * * * * /usr/local/scripts/monitor_col_gpfs_mmdiag--stats.sh
+  */10 * * * * /usr/local/scripts/monitor_col_gpfs_mmdiag--stats.sh
   > /var/log/monitor_col_gpfs_mmdiag--stats.log 2>&1
 
   - For gpfs_waiters:
-  0,10,20,30,40,50 * * * * /usr/local/scripts/monitor_col_waiters.sh >
+  */10 * * * * /usr/local/scripts/monitor_col_waiters.sh >
   /var/log/monitor_col_waiters.log 2>&1
 
   - For iostat:
-  0,10,20,30,40,50 * * * * /usr/local/scripts/monitor_col_iostat.sh >
+  */10 * * * * /usr/local/scripts/monitor_col_iostat.sh >
   /var/log/monitor_col_iostat.log 2>&1
 
   - For nmon:
-  0,10,20,30,40,50 * * * * /usr/local/scripts/monitor_col_nmon.sh >
+  */10 * * * * /usr/local/scripts/monitor_col_nmon.sh >
   /var/log/monitor_col_nmon.log 2>&1
 
   - For gpfs_perf:
-  0,10,20,30,40,50 * * * * /usr/local/scripts/monitor_col_gpfs_perf.sh >
+  */10 * * * * /usr/local/scripts/monitor_col_gpfs_perf.sh >
   /var/log/monitor_col_gpfs_perf.log 2>&1
 
 
